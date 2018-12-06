@@ -1,0 +1,12 @@
+.card-title {
+    background-position: center;
+    background-repeat: no-repeat;
+    height:100%;
+    width: 100%;
+}
+
+.btnCadastrar{
+    font-weight: 600;
+    color: #fff;
+    background-color: #0062cc;
+}

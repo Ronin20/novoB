@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-sm">
+               
+                <div class="menu">
+                    <div class="top-lista" style="background: blue"><p id="top">SALAS ATIVAS</p></div>
+                    
+                    <ul class="list-group">
+                        <li class="list-group-item" *ngFor="let sala of salas">
+                          <div class="items-sala">
+                             <a href="">{{sala.nome}}</a> 
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-8 ">
+                
+                <div class="foto"><img id="foto" src="../../assets/brainstorming-1-638.jpg"/></div>
+                <div class="buton">
+                    <button routerLink = "../criar-sala" type="button" class="btn btn-lg btn-primary">Criar</button>
+                    <button routerLink = "../entrar-sala" type="button" class="btn btn-lg btn-primary">Entrar</button>
+                </div>
+            </div>    
+        </div>
+    </div>
+  </div>

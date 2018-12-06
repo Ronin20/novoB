@@ -1,0 +1,22 @@
+.row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    text-align: center;
+    font-family: fantasy;
+  }
+  .btn {
+    width: 160px;
+    height: 60px;
+    background: #3e4095;
+  }
+  div#page {
+    width: auto;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  img {
+    max-width: 15%;
+  }
+  

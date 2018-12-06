@@ -1,0 +1,45 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="d-flex justify-content-center" style=" padding-top: 100px; padding-bottom: 100px">
+  <div class="card text-black bg-white mb-3" style="max-width: 30rem;">
+    <div class="card-body">
+      <div class="card-title"></div>
+
+      <div>
+        <h5 class="card-title">Login do usuário</h5>
+      </div>
+
+      <hr/>
+      <form [formGroup]="form_login" (ngSubmit)="autenticar()">
+        <div class="form-group">
+          <input 
+            type="email" 
+            class="form-control" 
+            placeholder="E-mail"
+			formControlName="email"
+          >
+        </div>
+
+        <div class="form-group">
+          <input 
+            type="password"
+            class="form-control" 
+            placeholder="Senha"
+			formControlName="senha"
+          >
+        </div>
+
+        <!--<button routerLink = "../area-trabalho" type="submit" class="btn btnCadastrar btn-block">Cadastrar</button>-->
+		 <button type="submit" class = "btn btnCadastrar btn-block">Login</button>
+      </form>
+      <hr />
+      <p class="small text-center">------------------------------------------------------------------------------------------------------------------------.  </p>
+      <p>{{message}}</p>
+
+    </div>
+  </div>
+</div>
+<br />

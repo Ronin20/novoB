@@ -1,0 +1,33 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="d-flex justify-content-center" style="height: 500px; padding-top: 50px; padding-bottom: 50px;">
+  <div class="card text-black bg-white mb-3" style="max-width: 30rem;">
+    <div class="card-body">
+      <div class="card-title"></div>
+
+      <div align="center">
+        <h5 class="card-title">Entrar em Sala</h5>
+      </div>
+
+      <hr/>
+      <form [formGroup]="form_entrar_sala" (ngSubmit)="entrarSala()">
+        <div class="form-group">
+          <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Id"
+			      formControlName="id"
+          >
+        </div>
+		 <button type="submit" class = "btn btnCadastrar btn-block">Entrar</button>
+      </form>
+      <hr />
+
+      <p class="small text-center">---------------------------------------------------------------------</p>
+    </div>
+  </div>
+</div>
+<br />
