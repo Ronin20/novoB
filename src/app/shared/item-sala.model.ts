@@ -1,3 +1,3 @@
 export class ItemSala{
-    constructor(public nome: string,){}
+    constructor(public nome: string){}
 }

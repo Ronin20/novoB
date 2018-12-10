@@ -1,0 +1,13 @@
+<h4 style="text-align:center">Nova Categoria</h4>
+<div>
+		<h4>Categoria: </h4>
+		<form [formGroup]="form_add_categoria" (ngSubmit)="addCategoria()">
+        <input 
+						class="addidea"
+						type="text"
+						placeholder="categoria"
+						formControlName="new_idea"
+				>
+				<button type="submit" class="btn btn-success" style="margin-top:10px;">Add</button>
+		</form>	
+</div>
