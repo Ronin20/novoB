@@ -28,7 +28,7 @@ export class MenuAddIdeaComponent implements OnInit {
 
 
   ngOnInit() {
-    this.categorias = this.banco.getAll()
+    this.categorias = this.banco.getAll(this.banco.idSala)
   }
 
   public addIdeia(): void {

@@ -28,6 +28,11 @@ export class EntrarSalaComponent implements OnInit {
   entrarSala():void{
     this.banco.carregarSala(this.form_entrar_sala.value.id)
     this.router.navigate(['/sala'])
+    this.refresh()
+  }
+  
+  refresh(): void {
+    window.location.reload();
   }
 
 }

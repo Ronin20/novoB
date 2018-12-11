@@ -1,0 +1,7 @@
+<div class="list">
+    <header>{{titulo}}</header>
+        <ul *ngFor="let ideia of ideias | async">
+            <li *ngIf="ideia.titulo != ''">{{ideia.titulo}}</li>
+        </ul>
+  <footer></footer>
+</div>

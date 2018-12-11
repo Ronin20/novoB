@@ -10,10 +10,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 @Injectable()
 export class MenuAddCategoyComponent implements OnInit {
 
-  
-  public form_add_categoria: FormGroup = new FormGroup({
+  new_categoria: string
+  /*public form_add_categoria: FormGroup = new FormGroup({
     'new_categoria': new FormControl(null)
-  })
+  })*/
   
   constructor(
     private bd: Bd
@@ -26,8 +26,9 @@ export class MenuAddCategoyComponent implements OnInit {
   public addCategoria(): void {
     
     this.bd.adicionar_categoria({
-      nome: this.form_add_categoria.value.new_categoria
+      nome: this.new_categoria
     })
+    this.new_categoria = ''
   }
 
 

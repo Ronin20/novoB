@@ -7,7 +7,7 @@ import { ROUTES } from './app.routes';
 import { Autenticacao } from './autenticacao.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms'
+import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 import { RouterModule } from '@angular/router'
 import * as firebase from 'firebase'
 import { AppComponent } from './app.component';
@@ -25,6 +25,8 @@ import { MenuAddCategoyComponent } from './sala/menu-add-categoy/menu-add-catego
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
+import { CategoriaComponent } from './sala/categoria/categoria.component';
+import { SalaVotacaoComponent } from './sala-votacao/sala-votacao.component';
 
 @NgModule({
   declarations: [
@@ -40,12 +42,15 @@ import { environment } from '../environments/environment';
     EntrarRoomComponent, 
     SalaComponent,
     MenuAddIdeaComponent,
-    MenuAddCategoyComponent
+    MenuAddCategoyComponent,
+    CategoriaComponent,
+    SalaVotacaoComponent
   
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule.forRoot(ROUTES),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,

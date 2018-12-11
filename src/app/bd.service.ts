@@ -10,17 +10,13 @@ import { Observable } from 'rxjs';
 export class Bd{
 
     idSala: string = localStorage.getItem('idSalaLocal')
-    cats: any[] = this.getCategorias()
-    ideias: any[]
+    cats: any[] 
     categorias: Observable<any>
-    ideias2: Observable<any>
-
-    ideias3: any[]
 
     constructor(private db: AngularFireDatabase){
-        
-        this.categorias = this.getAll()
-        this.ideias2 = this.getAllIdeas('Categoria 1')
+        this.idSala = localStorage.getItem('idSalaLocal')
+        this.categorias = this.getAll(localStorage.getItem('idSalaLocal'))
+        this.cats = this.getCategorias()
     }
     //---------------------------------------------------------------
     public criar_sala(sala: any): void {
@@ -31,7 +27,6 @@ export class Bd{
                     admin: sala.email
             })
         console.log(sala)
-        console.log('Aqui, criamos a sala')
     }
 
     public adicionar_ideia(ideia: any): void{
@@ -41,17 +36,18 @@ export class Bd{
             })
     }
 
-
     public carregarSala(sala: string){
-        this.idSala = sala
         localStorage.setItem('idSalaLocal', sala)
+        this.idSala = localStorage.getItem('idSalaLocal')
     }
 
     public adicionar_categoria(categoria: any): void{
+        
         firebase.database().ref().child(`salas/${this.idSala}/${categoria.nome}`)
             .push({
                 titulo: ''
             })
+        this.cats = this.getCategorias()
     }
 
     getIdeas(cat: string): any {
@@ -66,9 +62,16 @@ export class Bd{
         return ideas
     }
 
+
+    buscaCategoria(indice: number){
+        let todas_categorias: any = this.getCategorias()
+        console.log(todas_categorias[indice])
+        return todas_categorias[indice]
+    }
+
     getCategorias(): any{
         let cats: any[] = []
-        
+       
         firebase.database().ref(`salas/${this.idSala}`)
             .once('value')
             .then((snapshot) => {
@@ -79,21 +82,6 @@ export class Bd{
         return cats
     }
     
-    getAllIdeas3() { 
-        console.log('oi')
-        //for(let i = 0;i < this.cats.length;i++){
-            //console.log(this.cats[i])
-        this.ideias2 = this.getAllIdeas(this.cats[0])
-        console.log(this.ideias2)
-        //}
-        //console.log(this.ideias3)
-    }
-
-   /* getAllIdeas2(cat: string) {
-        console.log('CAT EH: ', cat) 
-        this.ideias3.push(this.getAllIdeas(cat))
-    }*/
-
     getAllIdeas(cat: string) { 
         return this.db.list(`salas/${this.idSala}/${cat}`)
           .snapshotChanges()
@@ -104,7 +92,7 @@ export class Bd{
           );
     }
 
-    getAll() { 
+    getAll(cat: string) { 
         return this.db.list(`salas/${this.idSala}`)
           .snapshotChanges()
           .pipe(
