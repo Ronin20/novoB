@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase'
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class AppComponent implements OnInit {
   
   
   ngOnInit(): void {
- 
+    firebase.initializeApp(environment.firebase)
   }
   
   title = 'planoB';

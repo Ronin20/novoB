@@ -2,7 +2,7 @@ import { Autenticacao } from './../../autenticacao.service';
 import { Usuario } from './../usuario.model';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-
+import * as firebase from 'firebase'
 
 
 @Component({

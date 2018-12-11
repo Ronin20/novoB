@@ -15,20 +15,20 @@ export class SalaComponent implements OnInit {
   
   //public salas: Sala[] = SALAS_E
   //ideias: Observable<any>;
-  categorias: Observable<any>
-  cats: any[]
-  ideias: any[]
+  categorias: Observable<any>= this.banco.categorias
+  cats: any[] = this.banco.cats
+  ideias: any[] = this.banco.ideias
   constructor(private banco: Bd) {}
 
   ngOnInit() {
-    this.categorias = this.banco.getAll('944')
-    this.cats = this.banco.getCategorias('944')
+    //this.categorias = this.banco.getAll()
+    //this.cats = this.banco.getCategorias()
     //console.log('Estou no ng on init e a categoria passada é: ', this.cats[0])
-    this.ideias = this.banco.getIdeas('944', 'Categoria 4') // o problema esta aqui, cat[0] eh nulo neste momento
+    //this.ideias = this.banco.getIdeas('Categoria 3') // o problema esta aqui, cat[0] eh nulo neste momento
   }
   exibir(): void {
-    //console.log(this.cats)
     console.log(this.ideias)
+    //console.log(this.cats)
     //console.log(this.cats)
     //console.log(this.cats)
     //const mostra = item => console.log(item.key)

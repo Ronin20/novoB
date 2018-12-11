@@ -1,5 +1,5 @@
 import { Bd } from './../../bd.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   templateUrl: './menu-add-categoy.component.html',
   styleUrls: ['./menu-add-categoy.component.css']
 })
+@Injectable()
 export class MenuAddCategoyComponent implements OnInit {
 
   
@@ -25,7 +26,6 @@ export class MenuAddCategoyComponent implements OnInit {
   public addCategoria(): void {
     
     this.bd.adicionar_categoria({
-      sala: '944',
       nome: this.form_add_categoria.value.new_categoria
     })
   }

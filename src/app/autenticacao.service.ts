@@ -38,6 +38,7 @@ export class Autenticacao{
             .then((resposta: any) => {
                 firebase.auth().currentUser.getIdToken()
                     .then((idToken: string) => {
+                        console.log('Deu')
                         this.token_id = idToken
                         localStorage.setItem('idToken', idToken)
                         this.router.navigate(['/area-trabalho'])

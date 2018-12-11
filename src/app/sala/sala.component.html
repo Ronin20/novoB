@@ -5,16 +5,16 @@
 				<div class="list" *ngFor="let categoria of categorias | async">
 					<header>{{categoria.key}}</header>
 						<ul>
-							<li>Ideia</li>
+							<li>Item</li>
 						</ul>
 						<ul>
-							<li>Ideia</li>
+							<li>Item</li>
 						</ul>
 						<ul>
-							<li>Ideia</li>
+							<li>Item</li>
 						</ul>
 						<ul>
-							<li>Ideia</li>
+							<li>Item</li>
 						</ul>
 					<footer>
 					</footer>
@@ -34,6 +34,9 @@
 				<app-menu-add-categoy></app-menu-add-categoy>
 			</div>
 		</div>
+		<div class="row">
+			<button type="button" class="btn btn-danger ml-2" (click)="terminarSala()">Terminar</button>
+		</div>
 	</div>
 </div>
 
@@ -46,6 +49,5 @@
 		<p>oi</p>
 		<p>{{s.titulo}}</p>
 	</div>
-</div>
+</div>-->
 <button type="button" class="btn btn-danger ml-2" (click)="exibir()">Exibir</button>
--->
