@@ -4,6 +4,12 @@
 			<div class="lists" >
 				<div class="list" *ngFor="let categoria of categorias | async">
 					<header>{{categoria.key}}</header>
+					<div *ngFor="let idea of ideias2 | async">
+						<ul *ngIf="idea.titulo != ''">
+							<li>{{idea.titulo}}</li>
+						</ul>
+					</div>
+						<!--
 						<ul>
 							<li>Item</li>
 						</ul>
@@ -13,9 +19,7 @@
 						<ul>
 							<li>Item</li>
 						</ul>
-						<ul>
-							<li>Item</li>
-						</ul>
+						-->
 					<footer>
 					</footer>
 				</div>

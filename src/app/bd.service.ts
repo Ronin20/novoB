@@ -10,13 +10,17 @@ import { Observable } from 'rxjs';
 export class Bd{
 
     idSala: string = localStorage.getItem('idSalaLocal')
-    cats: any[] 
+    cats: any[] = this.getCategorias()
     ideias: any[]
     categorias: Observable<any>
+    ideias2: Observable<any>
+
+    ideias3: any[]
+
     constructor(private db: AngularFireDatabase){
-        this.cats = this.getCategorias()
+        
         this.categorias = this.getAll()
-        this.return_ideas()
+        this.ideias2 = this.getAllIdeas('Categoria 1')
     }
     //---------------------------------------------------------------
     public criar_sala(sala: any): void {
@@ -50,56 +54,6 @@ export class Bd{
             })
     }
 
-/*
-    public atualiza_dados(sala: string): any{
-        console.log('Entramos aqui mlk')
-        firebase.database().ref(`salas/${sala}`)
-            .once('value')
-            .then((snapshot) => {
-                
-                console.log('SNAPHOT COMPLETO: ', snapshot)
-                let snap = snapshot.val()
-                console.log('teste: ', snap.titulo)
-                snapshot.forEach((childSnapshot: any) => {
-                    console.log(childSnapshot.val().key())
-                    
-                })
-                
-            })
-    }
-    
-    public add_categoria(): void {
-
-    }
-    */
-    public teste(): any {
-        /*console.log('FUNÇÃO TESTE')
-        var salas = firebase.database().ref('salas/' + '944');
-        salas.on('value', function(snapshot) {
-            console.log(this.snapshotToArray(snapshot))
-            //updateStarCount(postElement, snapshot.val());
-        });*/
-    }
-
-    /*getNumberChildrens(idSala: string) {
-        return ref.child("messages").on("value", function(snapshot) {
-            console.log("There are "+snapshot.numChildren()+" messages");
-          })
-    }*/
-
-    return_ideas(): void{
-        console.log('aqui eh o cats: ', this.cats)
-        this.cats.forEach(this.push_i)
-    }
-
-    push_i(i: any): any{
-        this.ideias.push(this.get_i(i))
-    }
-
-    get_i(i: any): any{
-        return this.getIdeas(i).titulo
-    }
-
     getIdeas(cat: string): any {
         let ideas: any[] = []
         firebase.database().ref(`salas/${this.idSala}/${cat}`)
@@ -112,9 +66,6 @@ export class Bd{
         return ideas
     }
 
-
-
-
     getCategorias(): any{
         let cats: any[] = []
         
@@ -126,6 +77,31 @@ export class Bd{
                 })
             })
         return cats
+    }
+    
+    getAllIdeas3() { 
+        console.log('oi')
+        //for(let i = 0;i < this.cats.length;i++){
+            //console.log(this.cats[i])
+        this.ideias2 = this.getAllIdeas(this.cats[0])
+        console.log(this.ideias2)
+        //}
+        //console.log(this.ideias3)
+    }
+
+   /* getAllIdeas2(cat: string) {
+        console.log('CAT EH: ', cat) 
+        this.ideias3.push(this.getAllIdeas(cat))
+    }*/
+
+    getAllIdeas(cat: string) { 
+        return this.db.list(`salas/${this.idSala}/${cat}`)
+          .snapshotChanges()
+          .pipe(
+            map(changes => {
+                return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+            })
+          );
     }
 
     getAll() { 
