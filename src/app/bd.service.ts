@@ -15,17 +15,20 @@ export class Bd implements OnInit{
     administrador: string
     categorias: Observable<any>
     info: Observable<any>
-    
+    salas: Observable<any>
+
     constructor(private db: AngularFireDatabase){
         this.idSala = localStorage.getItem('idSalaLocal')
         this.categorias = this.getAll(localStorage.getItem('idSalaLocal'))
         this.cats = this.getCategorias()
-        this.info = this.getAllInfo()
+        this.salas = this.getSalas()   
+        this.info = this.getAllInfo() 
         
     }
 
     ngOnInit() {
-        this.administrador = this.getAdmin()
+        
+        //this.administrador = this.getAdmin()
     }
     //---------------------------------------------------------------
     public criar_sala(sala: any): void {
@@ -33,7 +36,6 @@ export class Bd implements OnInit{
         firebase.database().ref(`salas/${sala.id}/info`)
             .push({ id: sala.id,
                 tema: sala.tema,
-                qtd_membros: sala.qtd_membros,
                 admin: sala.email
         })
         console.log(sala)
@@ -127,7 +129,7 @@ export class Bd implements OnInit{
             })
           );
     }
-
+/*
     getAdmin(): string{
         let admin
         this.info.forEach(nivel1 => {
@@ -138,6 +140,16 @@ export class Bd implements OnInit{
         console.log('nivel2: ', admin)
                 
         return admin
+    }*/
+
+    getSalas() { 
+        return this.db.list(`salas/`)
+          .snapshotChanges()
+          .pipe(
+            map(changes => {
+                return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+            })
+          );
     }
 
 }

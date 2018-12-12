@@ -2,6 +2,7 @@ import { Bd } from './../../../bd.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import * as firebase from 'firebase'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-criar-sala',
   templateUrl: './criar-sala.component.html',
@@ -20,7 +21,8 @@ export class CriarSalaComponent implements OnInit {
 
 
   constructor(
-    private bd: Bd
+    private bd: Bd,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -34,9 +36,9 @@ export class CriarSalaComponent implements OnInit {
     this.bd.criar_sala({
         id: id_sala,
         tema: this.form_criar_sala.value.tema,
-        qtd_membros: this.form_criar_sala.value.qtd_membros,
         email: this.email
     })
+    this.router.navigate(['/area-trabalho'])
   }
 
   public getRandomInt(min, max) {

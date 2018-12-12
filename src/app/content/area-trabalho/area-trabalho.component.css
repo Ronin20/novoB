@@ -53,6 +53,7 @@ img{
     
 }
 
+
 .btn{
     margin-top: 200px;
     background: #3E4095;
@@ -61,6 +62,8 @@ img{
     height: 40px;
 }
 .top-lista{
+    margin-top: 10px;
+    margin-bottom: 10px;
     text-align: center;
     background: white;
     height: 20px;
@@ -68,7 +71,4 @@ img{
 .foto{
     margin-top: -60px;
     margin-right: 100px;
-}
-.buton{
-    margin-top: -150px;
 }

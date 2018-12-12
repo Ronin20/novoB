@@ -20,7 +20,7 @@ export class SalaComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.categorias = this.banco.categorias
-    this.admin_email = this.banco.administrador
+    //this.admin_email = this.banco.getAdmin()
     firebase.auth().onAuthStateChanged((user) => {
       this.user_email = user.email
     })
