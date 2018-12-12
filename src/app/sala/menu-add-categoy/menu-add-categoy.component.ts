@@ -9,7 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 @Injectable()
 export class MenuAddCategoyComponent implements OnInit {
-
+  message_error: string = ''
   new_categoria: string
   /*public form_add_categoria: FormGroup = new FormGroup({
     'new_categoria': new FormControl(null)
@@ -24,12 +24,17 @@ export class MenuAddCategoyComponent implements OnInit {
 
 
   public addCategoria(): void {
-    
-    this.bd.adicionar_categoria({
-      nome: this.new_categoria
-    })
-    this.new_categoria = ''
-  }
+    if(this.new_categoria){
+        this.bd.adicionar_categoria({
+            nome: this.new_categoria,
+            salaId: undefined
+        })
+        this.new_categoria = ''
+        this.message_error = ''
+    }else{
+      this.message_error = '*Escolha uma categoria'
+    }
+    }
 
 
 }

@@ -1,3 +1,4 @@
+import { Categoria } from './../../shared/categoria.model';
 import { SALAS_E } from './../../salas-mocks';
 import { Bd } from './../../bd.service';
 import { Component, OnInit, Injectable } from '@angular/core';
@@ -16,11 +17,14 @@ export class MenuAddIdeaComponent implements OnInit {
   
   //public salas: Sala[] = SALAS_E
   categorias: Observable<any>
-
+  new_idea: string
+  categoria: string
+  
+  /*
   public form_add_ideia: FormGroup = new FormGroup({
     'new_idea': new FormControl(null),
     'categoria': new FormControl(null)
-  })
+  })*/
 
   constructor(
     private banco: Bd
@@ -33,9 +37,11 @@ export class MenuAddIdeaComponent implements OnInit {
 
   public addIdeia(): void {
     this.banco.adicionar_ideia({
-      categoria: this.form_add_ideia.value.categoria,
-      ideia: this.form_add_ideia.value.new_idea
+      categoria: this.categoria,
+      ideia: this.new_idea
     })
+    this.categoria = ''
+    this.new_idea = ''
     
   }
 

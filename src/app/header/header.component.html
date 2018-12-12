@@ -1,6 +1,15 @@
-<nav>
-  <div class="nav-wrapper">
-    <p class="brand-logo center" style="font-family: fantasy; font-size: 30px">Brainstorming Rooms</p>
-    <p align="right" *ngIf="router.url === '/area-trabalho'"><a href="/login" (click)="sair()" style="margin-right: 20px">Sair</a></p>
+<nav *ngIf="router.url === '/sala'; else foradasala">
+  <div class="nav-wrapper" >
+    <p class="brand-logo center" style="font-family: fantasy; font-size: 30px" *ngFor="let i of info | async" >{{i.tema}} - {{i.id}}</p>
+    <p align="right" *ngIf="token !== null && router.url != '/login'"><a href="/login" (click)="sair()" style="margin-right: 20px">Sair</a></p>
   </div>
 </nav>
+
+<ng-template  #foradasala>
+  <nav>
+    <div class="nav-wrapper" >
+      <p class="brand-logo center" style="font-family: fantasy; font-size: 30px" *ngFor="let i of info | async">{{title}}</p>
+      <p align="right" *ngIf="token !== null && router.url != '/login'"><a href="/login" (click)="sair()" style="margin-right: 20px">Sair</a></p>
+    </div>
+  </nav>
+</ng-template>

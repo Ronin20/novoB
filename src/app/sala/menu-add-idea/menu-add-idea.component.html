@@ -1,20 +1,22 @@
 <h4 style="text-align:center">Novas ideias</h4>
 <div>
 		<h4>Categoria: </h4>
-		<form [formGroup]="form_add_ideia" (ngSubmit)="addIdeia()">
-			  <select class="form-control form-control-lg" formControlName="categoria">
-					  <option 
-						    *ngFor="let categoria of categorias | async"
-							  value= "{{categoria.key}}"
-							>{{categoria.key}}
-						</option>
-				</select>
+		<form (ngSubmit)="addIdeia()">
+			  <select
+			  		type="text" placeholder="Categoria" 
+			  		name="name" class="form-control"
+			  		[(ngModel)]="categoria"
+		  		>
+				<option 
+					*ngFor="let categoria of categorias | async"
+					value= "{{categoria.key}}"
+				>{{categoria.key}}</option>
+			</select>
           
-        <input 
-						class="addidea"
-						type="text"
-						placeholder="add a idea"
-						formControlName="new_idea"
+				<input 
+					type="text" placeholder="Categoria" 
+					name="name" class="form-control"
+					[(ngModel)]="new_idea"
 				>
 				<button type="submit" class="btn btn-success" style="margin-top:10px;">Add</button>
 		</form>	

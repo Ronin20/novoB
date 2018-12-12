@@ -29,7 +29,7 @@ export class Autenticacao{
                 this.router.navigate(['/login'])
             })
             .catch((error: Error) => {
-                console.log(error)
+                alert('Este email já está registrado')
             })
     }
 

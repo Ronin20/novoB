@@ -1,6 +1,8 @@
 import { Autenticacao } from './../autenticacao.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Bd } from '../bd.service';
 
 @Component({
   selector: 'app-header',
@@ -10,10 +12,17 @@ import { Component, OnInit, Injectable } from '@angular/core';
 
 @Injectable()
 export class HeaderComponent implements OnInit {
-
-  constructor(public router: Router, private autenticacao: Autenticacao) { }
+  token: any = localStorage.getItem('idToken')
+  info: Observable<any>
+  constructor(
+      public router: Router,
+      private autenticacao: Autenticacao,
+      private banco: Bd
+    
+  ) { }
 
   ngOnInit() {
+    this.info = this.banco.info
   }
 
   public sair(): void{
