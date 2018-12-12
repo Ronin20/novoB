@@ -32,7 +32,7 @@ export class MenuAddCategoyComponent implements OnInit {
         this.new_categoria = ''
         this.message_error = ''
     }else{
-      this.message_error = '*Escolha uma categoria'
+      this.message_error = '*Preencha o campo vazio'
     }
     }
 

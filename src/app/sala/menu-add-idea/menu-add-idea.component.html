@@ -14,10 +14,11 @@
 			</select>
           
 				<input 
-					type="text" placeholder="Categoria" 
+					type="text" placeholder="Ideia" 
 					name="name" class="form-control"
 					[(ngModel)]="new_idea"
 				>
 				<button type="submit" class="btn btn-success" style="margin-top:10px;">Add</button>
 		</form>	
+		<p style="color: red">{{message_error}}</p>
 </div>

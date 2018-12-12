@@ -1,3 +1,4 @@
+import { SalaVotacaoComponent } from './sala-votacao/sala-votacao.component';
 import { SalaComponent } from './sala/sala.component';
 import { AutenticacaoGuard } from './autenticacao-guard.service';
 import { LoginComponent } from './content/login/login.component';
@@ -15,5 +16,6 @@ export const ROUTES: Routes = [
     { path: 'area-trabalho', component: AreaTrabalhoComponent , canActivate: [ AutenticacaoGuard ]},
     { path: 'criar-sala', component: CriarSalaComponent, canActivate: [ AutenticacaoGuard ] },
     { path: 'entrar-sala', component: EntrarSalaComponent, canActivate: [ AutenticacaoGuard ]},
-    { path: 'sala', component: SalaComponent }
+    { path: 'sala', component: SalaComponent },
+    { path: 'sala-votacao', component: SalaVotacaoComponent }
 ]

@@ -19,7 +19,7 @@ export class MenuAddIdeaComponent implements OnInit {
   categorias: Observable<any>
   new_idea: string
   categoria: string
-  
+  message_error: string = ''
   /*
   public form_add_ideia: FormGroup = new FormGroup({
     'new_idea': new FormControl(null),
@@ -36,13 +36,17 @@ export class MenuAddIdeaComponent implements OnInit {
   }
 
   public addIdeia(): void {
-    this.banco.adicionar_ideia({
-      categoria: this.categoria,
-      ideia: this.new_idea
-    })
-    this.categoria = ''
-    this.new_idea = ''
-    
+    if(!this.categoria || !this.new_idea){
+      this.message_error = "*Preencha os campos vazios"
+    }else{
+      this.banco.adicionar_ideia({
+        categoria: this.categoria,
+        ideia: this.new_idea
+      })
+      this.categoria = ''
+      this.new_idea = ''
+      this.message_error = ''
+    }
   }
 
 }
